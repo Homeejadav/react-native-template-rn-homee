@@ -13,7 +13,8 @@
 - Optimised Keyboard Avoiding View.
 - Footer Content.
 - i18n with 4 demo languages.
-- Multiple Language Support
+- Multiple Language Support.
+- Custom Picker
 
 ## Installation
 

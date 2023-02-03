@@ -1,11 +1,16 @@
 {
   "name": "react-native-template-rn-homee",
-  "version": "0.0.16",
+  "version": "0.0.17",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Homeejadav/react-native-template-rn-homee"
+  },
   "keywords": [
     "react",
     "native",
     "react-native",
     "template",
+    "package",
     "starter-code",
     "rn-homee",
     "starter-kit"
