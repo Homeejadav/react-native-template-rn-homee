@@ -1,10 +1,16 @@
 {
   "name": "react-native-template-rn-homee",
   "version": "0.0.17",
+  "description": "Homee's React-Native Boilerplate",
   "repository": {
     "type": "git",
     "url": "https://github.com/Homeejadav/react-native-template-rn-homee"
   },
+  "bugs": {
+    "url": "https://github.com/Homeejadav/react-native-template-rn-homee/issues"
+  },
+  "homepage": "https://github.com/Homeejadav/react-native-template-rn-homee",
+  "license": "MIT",
   "keywords": [
     "react",
     "native",
