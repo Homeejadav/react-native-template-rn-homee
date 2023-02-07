@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Colors } from '../constants/colors';
 import BottomTabNav from './bottomTabNavigator';
+import { navigationRef } from './navActions';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,15 +27,15 @@ class StackNavigator extends React.Component {
 	render() {
 		I18n.locale = this.props.localize;
 		return (
-			<NavigationContainer>
+			<NavigationContainer ref={navigationRef}>
 				<StatusBar animated={true} backgroundColor={Colors.snowWhite} barStyle={"dark-content"} />
 				<Stack.Navigator screenOptions={{ headerShown: false }}>
 					{/* {this._addScreen('TestScreen')} */}
+					<Stack.Screen options={{ animation: 'fade' }} name={'BottomTab'} component={BottomTabNav} />
 					<Stack.Screen name={'SplashScreen'} component={Screen.SplashScreen} />
 					<Stack.Screen options={{ animation: 'fade' }} name={'OnboardingScreen'} component={Screen.OnboardingScreen} />
 					<Stack.Screen options={{ animation: 'fade' }} name={'LoginScreen'} component={Screen.LoginScreen} />
 					<Stack.Screen options={{ animation: 'slide_from_bottom' }} name={'RegisterScreen'} component={Screen.RegisterScreen} />
-					<Stack.Screen options={{ animation: 'fade' }} name={'BottomTab'} component={BottomTabNav} />
 					{this._addScreen('OtpScreen')}
 					{this._addScreen('DetailsScreen')}
 				</Stack.Navigator>

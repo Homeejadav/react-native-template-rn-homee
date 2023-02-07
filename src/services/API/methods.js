@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const get = (endpoint, params, customHeaders = []) => {
 	let rootHeaders = {
@@ -10,12 +10,12 @@ const get = (endpoint, params, customHeaders = []) => {
 	if (endpoint && endpoint.length > 0) {
 		let response = axios.get(getFullApiUrl(endpoint), {
 			params: params,
-			headers: rootHeaders
-		})
+			headers: rootHeaders,
+		});
 		return response;
 	}
 	return false;
-}
+};
 
 const post = (endpoint, data, customHeaders = []) => {
 	let rootHeaders = {
@@ -26,20 +26,20 @@ const post = (endpoint, data, customHeaders = []) => {
 	}
 	if (endpoint && endpoint.length > 0) {
 		let response = axios.post(getFullApiUrl(endpoint), data, {
-			headers: rootHeaders
-		})
+			headers: rootHeaders,
+		});
 		return response;
 	}
 	return false;
-}
+};
 
 const getFullApiUrl = (endpoint) => {
 	if (endpoint && endpoint.length > 0) {
 		return process.env['REACT_NATIVE_SERVER_API_FULL_URL'] + endpoint;
 	}
-}
+};
 
 export const APIMethods = {
 	get,
-	post
-}
+	post,
+};

@@ -1,16 +1,15 @@
 import { actionCreators } from '@actions';
 import React from 'react';
 import { BackHandler, Image, Keyboard, Platform, ScrollView, StyleSheet, View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Toast from 'react-native-toast-message';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Fonts, FontSize, Images } from '../../assets';
-import { AppButton, AppButtonAnimated, AppSafeView, AppText } from '../../components/Custom';
+import { AppButton, AppSafeView, AppText } from '../../components/Custom';
 import AppOtpView from '../../components/Custom/AppOtpView';
 import { Colors } from '../../constants/colors';
-import { AppContainer, AppHeight, AppMargin, AppWidth, ButtonFlexContainer } from '../../constants/commonStyle';
+import { AppContainer, AppHeight, AppMargin, AppWidth } from '../../constants/commonStyle';
 
 class OtpScreen extends React.Component {
 	constructor(props) {
@@ -84,7 +83,6 @@ class OtpScreen extends React.Component {
 					</View>
 
 					<ScrollView bounces={false} showsVerticalScrollIndicator={false} >
-
 						<AppOtpView
 							inputCount={4}
 							handleTextChange={(text) =>
@@ -93,13 +91,12 @@ class OtpScreen extends React.Component {
 
 						<View style={{ marginTop: AppMargin._20, alignItems: 'center' }}>
 							<AppText label={`Resend OTP in 00:${this.state.timeLeft} Sec`} />
-							<AppButtonAnimated onClick={() => this.resetCountdown()} />
 						</View>
 
 						<Image style={{ height: AppHeight._250, width: AppWidth._100pr, marginTop: AppMargin._40 }} resizeMode='contain' source={Images.imgDemo7} />
 					</ScrollView>
 
-					<AppButton top={hp(2)} label={`Submit`} onClick={() => { alert(this.state.otpInput) }} />
+					<AppButton isLoading={true} top={hp(2)} label={`Submit`} onClick={() => { alert(this.state.otpInput) }} />
 
 				</View>
 			</AppSafeView>

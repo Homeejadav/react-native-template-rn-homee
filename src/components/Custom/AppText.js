@@ -4,7 +4,6 @@ import { Fonts, FontSize } from '../../assets';
 import { Colors } from '../../constants/colors';
 
 class AppText extends React.Component {
-
 	_textStyles = () => {
 		const {
 			fontSize,
@@ -17,7 +16,7 @@ class AppText extends React.Component {
 			center,
 			bottom,
 			hz,
-			textAlign
+			textAlign,
 		} = this.props;
 
 		return {
@@ -31,23 +30,30 @@ class AppText extends React.Component {
 			includeFontPadding: false,
 			textAlign: textAlign ? textAlign : null,
 			paddingHorizontal: hz ? hz : 0,
-			letterSpacing: letterSpacing ? letterSpacing : null
-		}
-	}
+			letterSpacing: letterSpacing ? letterSpacing : null,
+		};
+	};
 
 	render() {
 		const { label, indexKey, onTextPress, flex } = this.props;
 		return (
 			<TouchableOpacity
-				style={[{ flex: flex ? flex : 0 },
-				{ justifyContent: 'center' }]}
+				style={[
+					{
+						flex: flex ? flex : 0,
+					},
+					{
+						justifyContent: 'center',
+					},
+				]}
 				disabled={!onTextPress}
-				onPress={onTextPress} >
+				onPress={onTextPress}
+			>
 				<Text key={indexKey} style={this._textStyles()}>
 					{label}
 				</Text>
 			</TouchableOpacity>
-		)
+		);
 	}
 }
 

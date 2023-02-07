@@ -4,10 +4,14 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Fonts, Icons } from '../../assets';
-import { AppButton, AppDropdown, AppSafeView, AppScrollView, AppText, AppTextInput } from '../../components/Custom';
-import { Colors } from '../../constants/colors';
-import { AppContainer, AppMargin, ButtonFlexContainer } from '../../constants/commonStyle';
+import {
+	AppButton,
+	AppCheckBox,
+	AppDropdown,
+	AppRadioButton,
+	AppSafeView, AppSwitch
+} from '../../components/Custom';
+import { AppContainer, AppMargin } from '../../constants/commonStyle';
 import { reducerType } from '../../constants/reducerType';
 import { t } from '../../services/localize';
 
@@ -15,44 +19,76 @@ class SettingScreen extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isLoading: false
+			isLoading: false,
+			isChecked: false,
+			isRadio: false,
+			isSwitch: false,
 		};
 	}
 
-
-
 	_onClick = () => {
-		this.setState({ isLoading: true })
+		this.setState({ isLoading: true });
 		setTimeout(() => {
-			this.setState({ isLoading: false })
-			alert('On Pressed')
-		}, 3000)
-	}
+			this.setState({ isLoading: false });
+			alert('On Pressed');
+		}, 3000);
+	};
 
 	render() {
+		const { navigation } = this.props;
+		const { isChecked, isRadio, isSwitch } = this.state;
+
 		const languageOption = [
 			{ label: 'en - English', value: 'en' },
 			{ label: 'sp - Spanish', value: 'sp' },
 			{ label: 'gr - German', value: 'gr' },
 			{ label: 'jp - Japanese', value: 'jp' },
-		]
+		];
 
 		return (
 			<AppSafeView>
 				<View style={AppContainer}>
 					<ScrollView showsVerticalScrollIndicator={false} bounces={false}>
-
 						<AppDropdown
 							top={AppMargin._10}
 							defaultTitle={`Change Language`}
 							options={languageOption}
 							onValueChange={(value) => {
-								this.props.dispatchData(value, reducerType.localize)
+								this.props.dispatchData(value, reducerType.localize);
 							}}
 						/>
 
+						<AppCheckBox
+							top={AppMargin._20}
+							value={isChecked}
+							onValueChange={() => {
+								this.setState({ isChecked: !isChecked });
+							}}
+						/>
+
+						<AppRadioButton
+							top={AppMargin._20}
+							value={isRadio}
+							onValueChange={() => {
+								this.setState({ isRadio: !isRadio });
+							}}
+						/>
+
+						<AppSwitch
+							top={AppMargin._20}
+							value={isSwitch}
+							onValueChange={() => {
+								this.setState({ isSwitch: !isSwitch });
+							}}
+						/>
 					</ScrollView>
-					<AppButton top={hp(2)} label={t('title')} onClick={() => this.props.navigation.replace('OnboardingScreen')} />
+
+					<AppButton
+						top={hp(2)}
+						label={t('title')}
+						onClick={() => { navigation.replace('OnboardingScreen') }}
+					/>
+
 				</View>
 			</AppSafeView>
 		);
@@ -60,21 +96,15 @@ class SettingScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-	footerText: {
-		flexDirection: 'row',
-		justifyContent: 'center',
-		marginTop: AppMargin._20,
-		marginBottom: Platform.OS == 'android' && AppMargin._20
-	},
 
 });
 
-const mapStatetoProps = state => {
+const mapStatetoProps = (state) => {
 	return {
-		localize: state.initReducer.localize
+		localize: state.initReducer.localize,
 	};
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators(actionCreators, dispatch);
 
 export default connect(mapStatetoProps, mapDispatchToProps)(SettingScreen);

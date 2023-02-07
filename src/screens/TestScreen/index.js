@@ -1,34 +1,79 @@
-import React, { Component } from 'react';
-import { View, Animated, Text } from 'react-native';
-import AppSafeView from '../../components/Custom/AppSafeView';
-import { Colors } from '../../constants/colors';
+import { actionCreators } from '@actions';
+import React from 'react';
+import { BackHandler, StyleSheet, View } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Fonts } from '../../assets';
+import { AppCheckBox, AppRadioButton, AppSafeView, AppSwitch, AppText } from '../../components/Custom';
+import { AppContainer, AppMargin } from '../../constants/commonStyle';
 
-class AnimatedProgressBar extends Component {
+class TestScreen extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			progress: new Animated.Value(0),
+			isChecked: false,
+			isRadio: false,
+			isSwitch: false,
 		};
 	}
 
 	componentDidMount() {
-		Animated.timing(this.state.progress, {
-			toValue: this.props.progress,
-			duration: 1000,
-			useNativeDriver: false
-		}).start();
+		BackHandler.addEventListener('hardwareBackPress', () => {
+			return true;
+		});
+		this._unsubscribe = this.props.navigation.addListener('focus', () => { });
+	}
+
+	componentWillUnmount() {
+		this._unsubscribe();
 	}
 
 	render() {
-		const { progress } = this.state;
+		const { isChecked, isSwitch, isRadio } = this.state;
+		const { navigation } = this.props;
 		return (
 			<AppSafeView>
-				<View style={{ flexDirection: 'row', backgroundColor: Colors.background }}>
-					<Text >Hiiii</Text>
+				<View style={AppContainer}>
+					<AppText fontFamily={Fonts.BOLD} label={'TestScreen'} />
+
+					<AppCheckBox
+						top={AppMargin._20}
+						value={isChecked}
+						onValueChange={() => {
+							this.setState({ isChecked: !isChecked });
+							alert(this.state.isChecked);
+						}}
+					/>
+
+					<AppRadioButton
+						top={AppMargin._20}
+						value={isRadio}
+						onValueChange={() => {
+							this.setState({ isRadio: !isRadio });
+							alert(this.state.isRadio);
+						}}
+					/>
+
+					<AppSwitch
+						top={AppMargin._20}
+						value={isSwitch}
+						onValueChange={() => {
+							this.setState({ isSwitch: !isSwitch });
+							alert(this.state.isSwitch);
+						}}
+					/>
 				</View>
 			</AppSafeView>
 		);
 	}
 }
 
-export default AnimatedProgressBar;
+const styles = StyleSheet.create({});
+
+const mapStatetoProps = (state) => {
+	return {};
+};
+
+const mapDispatchToProps = (dispatch) => bindActionCreators(actionCreators, dispatch);
+
+export default connect(mapStatetoProps, mapDispatchToProps)(TestScreen);

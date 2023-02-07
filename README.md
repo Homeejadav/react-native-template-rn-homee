@@ -14,7 +14,8 @@
 - Footer Content.
 - i18n with 4 demo languages.
 - Multiple Language Support.
-- Custom Picker
+- Custom Picker.
+- Animated Check Box, Toggle Button, Radio Button.
 
 ## Installation
 
@@ -47,6 +48,22 @@ Link assets with
 ![App Screenshot](https://i.paste.pics/f765c986b0d5bd45d82516185b94f777.png)
 
 ![App Screenshot](https://i.paste.pics/951a9cc4a95476e4dbcc3d9d5328cdf9.png)
+
+## Animated Components
+
+Check box, Radio Button, Switch.
+
+```bash
+import { AppCheckBox, AppRadioButton, AppSwitch } from '../../components/Custom';
+
+<AppCheckBox
+	top={AppMargin._20}
+	value={isChecked}
+	onValueChange={() => {
+	this.setState({ isChecked: !isChecked });
+    }}
+  />
+```
 
 ## Authors
 

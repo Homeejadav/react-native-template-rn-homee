@@ -1,0 +1,77 @@
+import React, { Component } from 'react';
+import { Animated, TouchableOpacity, View } from 'react-native';
+import { Icons } from '../../assets';
+import { Colors } from '../../constants/colors';
+import { AppPadding, borderRadius5 } from '../../constants/commonStyle';
+
+class CheckBox extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			checkboxAnimation: new Animated.Value(props.value ? 1 : 0),
+			value: props.value,
+		};
+	}
+
+	toggleCheckbox = () => {
+		const toValue = this.state.value ? 0 : 1;
+		Animated.timing(this.state.checkboxAnimation, {
+			toValue,
+			duration: 150,
+			useNativeDriver: true
+		}).start(() => {
+			this.setState({ value: !this.state.value });
+			if (this.props.onValueChange) {
+				this.props.onValueChange();
+			}
+		});
+	};
+
+	render() {
+		const animatedStyles = {
+			transform: [
+				{
+					scale: this.state.checkboxAnimation.interpolate({
+						inputRange: [0, 4],
+						outputRange: [0, 4],
+					}),
+				},
+			],
+			backgroundColor: this.props.color,
+		};
+
+		return (
+			<View style={{ paddingTop: this.props.top ? this.props.top : 0 }}>
+				<TouchableOpacity activeOpacity={1} style={styles.container} onPress={this.toggleCheckbox}>
+					<Animated.Image resizeMode={'contain'} source={Icons.icnCheck} style={[styles.checkbox, animatedStyles]} />
+				</TouchableOpacity>
+			</View>
+		);
+	}
+}
+
+CheckBox.defaultProps = {
+	color: Colors.snowWhite,
+	value: false,
+};
+
+const styles = {
+	container: {
+		height: 24,
+		width: 24,
+		justifyContent: 'center',
+		alignItems: 'center',
+		padding: AppPadding._10,
+		borderWidth: 2,
+		borderColor: Colors.primary,
+		...borderRadius5
+	},
+
+	checkbox: {
+		tintColor: Colors.primary,
+		width: 14,
+		height: 14,
+	},
+};
+
+export default CheckBox;

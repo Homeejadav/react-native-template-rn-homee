@@ -74,13 +74,11 @@ class AppTextInput extends React.Component {
 				}
 
 				<TextInput
-					style={
-						[style, styles.textInput,
-							{
-								width: showEye ? '80%' : '90%',
-								letterSpacing: letterSpacing ? letterSpacing : null
-							}]
-					}
+					style={[style, styles.textInput, {
+						width: showEye ? '80%' : '90%',
+						letterSpacing: letterSpacing ? letterSpacing : null
+					}]}
+
 					placeholder={placeholder}
 					defaultValue={defaultValue}
 					value={value}

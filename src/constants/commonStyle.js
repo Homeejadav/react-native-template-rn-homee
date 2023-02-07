@@ -1,5 +1,9 @@
+import { Dimensions } from "react-native";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen"
 import { widthPercentageToDP as wp } from "react-native-responsive-screen"
+
+const WindowWidth = Dimensions.get('window').width;
+const WindowHeight = Dimensions.get('window').height;
 
 const AppShadow = {
 	shadowColor: "#000",
@@ -74,4 +78,6 @@ export {
 	AppWidth,
 	ButtonEnd,
 	borderRadius5,
+	WindowWidth,
+	WindowHeight
 }

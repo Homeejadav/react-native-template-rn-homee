@@ -7,13 +7,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Colors } from '../../constants/colors';
 import { AppHeight, AppWidth } from '../../constants/commonStyle';
+// import LoadingSpinner from '../../screens/TestScreen/indexdemo';
 import AppText from './AppText';
 
 class AppButton extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-		};
+		this.state = {};
 	}
 
 	_buttonStyle = () => {
@@ -25,8 +25,8 @@ class AppButton extends React.Component {
 			bottom: bottom ? bottom : 0,
 			justifyContent: 'center',
 			alignItems: 'center',
-		}
-	}
+		};
+	};
 
 	render() {
 		const { label, fontsize, onClick, containerStyle, top, fontFamily } = this.props;
@@ -36,9 +36,12 @@ class AppButton extends React.Component {
 					{/* linear gredient pattern from left to right */}
 					{/* start={{ x: 0, y: 0.90 }} end={{ x: 1, y: 0.10 }} */}
 					<LinearGradient style={this._buttonStyle()} colors={Colors.gredient}>
-						{this.props.isLoading ?
+						{this.props.isLoading ? (
 							<Spinner size={22} type={'Circle'} color={Colors.snowWhite} />
-							: <AppText fontFamily={fontFamily} fontsize={fontsize} color={Colors.snowWhite} label={label} />}
+						) : (
+							// <LoadingSpinner />
+							<AppText fontFamily={fontFamily} fontsize={fontsize} color={Colors.snowWhite} label={label} />
+						)}
 					</LinearGradient>
 				</TouchableOpacity>
 			</View>
@@ -46,10 +49,10 @@ class AppButton extends React.Component {
 	}
 }
 
-const mapStatetoProps = state => {
+const mapStatetoProps = (state) => {
 	return {};
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators(actionCreators, dispatch);
 
 export default connect(mapStatetoProps, mapDispatchToProps)(AppButton);

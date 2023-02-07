@@ -6,9 +6,13 @@ import AppImage from './AppImage';
 import AppSafeView from './AppSafeView';
 import AppScrollView from './AppScrollView'
 import AppText from './AppText';
+import AppOtpView from './AppOtpView';
 import AppTextInput from './AppTextInput';
-import AppButtonAnimated from './AppButtonAnimated';
 import AppDropdown from './AppDropdown';
+import AppCheckBox from './AppCheckBox';
+import AppRadioButton from './AppRadioButton';
+import AppSwitch from './AppSwitch';
+import AppLoader from './AppLoader';
 
 export {
 	AppButton,
@@ -20,6 +24,10 @@ export {
 	AppCard,
 	AppIcon,
 	AppImage,
-	AppButtonAnimated,
-	AppDropdown
+	AppCheckBox,
+	AppRadioButton,
+	AppDropdown,
+	AppSwitch,
+	AppOtpView,
+	AppLoader
 };
