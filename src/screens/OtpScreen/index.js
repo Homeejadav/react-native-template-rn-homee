@@ -96,7 +96,7 @@ class OtpScreen extends React.Component {
 						<Image style={{ height: AppHeight._250, width: AppWidth._100pr, marginTop: AppMargin._40 }} resizeMode='contain' source={Images.imgDemo7} />
 					</ScrollView>
 
-					<AppButton isLoading={true} top={hp(2)} label={`Submit`} onClick={() => { alert(this.state.otpInput) }} />
+					<AppButton isLoading={false} top={hp(2)} label={`Submit`} onClick={() => { alert(this.state.otpInput) }} />
 
 				</View>
 			</AppSafeView>

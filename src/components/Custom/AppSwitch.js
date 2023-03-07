@@ -8,17 +8,17 @@ class AppSwitch extends Component {
 		super(props);
 		this.state = {
 			switchAnimation: new Animated.Value(props.value ? 1 : 0),
+			bgColorAnimation: new Animated.Value(props.value ? 1 : 0),
 			value: props.value,
 		};
 	}
 
 	toggleSwitch = () => {
 		const toValue = this.state.value ? 0 : 1;
-		Animated.timing(this.state.switchAnimation, {
-			toValue,
-			duration: 150,
-			useNativeDriver: true,
-		}).start(() => {
+		Animated.parallel([
+			Animated.timing(this.state.switchAnimation, { toValue, duration: 150, useNativeDriver: true }),
+			Animated.timing(this.state.bgColorAnimation, { toValue, duration: 150, useNativeDriver: false }),
+		]).start(() => {
 			this.setState({ value: !this.state.value });
 			if (this.props.onValueChange) {
 				this.props.onValueChange();
@@ -27,24 +27,37 @@ class AppSwitch extends Component {
 	};
 
 	render() {
-		const animatedStyles = {
-			transform: [
-				{
-					translateX: this.state.switchAnimation.interpolate({
-						inputRange: [0, 1],
-						outputRange: [-9, 9],
-					}),
-				},
-			],
+		const animatedSwitchStyles = {
+			transform: [{
+				translateX: this.state.switchAnimation.interpolate({
+					inputRange: [0, 1], outputRange: [-9, 9],
+				}),
+			}],
 		};
+
+		const bgColorInterpolation = this.state.bgColorAnimation.interpolate({
+			inputRange: [0, 1],
+			outputRange: [Colors.primaryTransparent, Colors.primary],
+		});
 
 		return (
 			<View style={{ paddingTop: this.props.top ? this.props.top : 0 }}>
 				<TouchableOpacity activeOpacity={1} onPress={this.toggleSwitch}>
-					<View style={[styles.switchContainer, { backgroundColor: this.state.value ? Colors.primary : Colors.primaryTransparent }]}>
-						<Animated.View style={[styles.switch, animatedStyles, { backgroundColor: this.state.value ? Colors.primary : Colors.placeholder }]} />
-						<Animated.View style={[styles.switch, animatedStyles, { backgroundColor: this.state.value ? Colors.snowWhite : Colors.snowWhite, position: 'absolute', justifyContent: 'center', alignItems: 'center' }]}>{/* render inside circle */}</Animated.View>
-					</View>
+					<Animated.View style={[styles.switchContainer, { backgroundColor: bgColorInterpolation }]}>
+						<Animated.View
+							style={[
+								animatedSwitchStyles,
+								styles.switch,
+								{
+									backgroundColor: this.state.value ? Colors.snowWhite : Colors.snowWhite,
+									position: 'absolute', justifyContent: 'center', alignItems: 'center'
+								},
+							]}
+						>
+							{/* render inside circle */}
+							<View style={{ backgroundColor: Colors.primary, padding: 5, borderRadius: 100 }} />
+						</Animated.View>
+					</Animated.View>
 				</TouchableOpacity>
 			</View>
 		);
@@ -60,7 +73,7 @@ const styles = {
 		width: 44,
 		height: 25,
 		borderRadius: 50,
-		backgroundColor: Colors.primary,
+		backgroundColor: Colors.primaryTransparent,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},

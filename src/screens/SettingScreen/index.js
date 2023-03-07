@@ -6,11 +6,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
 	AppButton,
-	AppCheckBox,
-	AppDropdown,
-	AppRadioButton,
+	AppCheckBox, AppRadioButton,
 	AppSafeView, AppSwitch
 } from '../../components/Custom';
+import AppPicker from '../../components/Custom/AppPicker';
 import { AppContainer, AppMargin } from '../../constants/commonStyle';
 import { reducerType } from '../../constants/reducerType';
 import { t } from '../../services/localize';
@@ -23,6 +22,7 @@ class SettingScreen extends React.Component {
 			isChecked: false,
 			isRadio: false,
 			isSwitch: false,
+			lang: 'Select a Language'
 		};
 	}
 
@@ -39,21 +39,24 @@ class SettingScreen extends React.Component {
 		const { isChecked, isRadio, isSwitch } = this.state;
 
 		const languageOption = [
-			{ label: 'en - English', value: 'en' },
-			{ label: 'sp - Spanish', value: 'sp' },
-			{ label: 'gr - German', value: 'gr' },
-			{ label: 'jp - Japanese', value: 'jp' },
+			{ id: 1, label: 'English', value: 'en' },
+			{ id: 2, label: 'Spanish', value: 'sp' },
+			{ id: 3, label: 'German', value: 'gr' },
+			{ id: 4, label: 'Japanese', value: 'jp' },
 		];
 
 		return (
 			<AppSafeView>
 				<View style={AppContainer}>
 					<ScrollView showsVerticalScrollIndicator={false} bounces={false}>
-						<AppDropdown
-							top={AppMargin._10}
-							defaultTitle={`Change Language`}
+						<AppPicker
+							shadow={true}
 							options={languageOption}
-							onValueChange={(value) => {
+							itemKey={'label'}
+							itemValue={'value'}
+							title={this.state.lang}
+							onSelectOption={(name, value) => {
+								this.setState({ lang: name })
 								this.props.dispatchData(value, reducerType.localize);
 							}}
 						/>

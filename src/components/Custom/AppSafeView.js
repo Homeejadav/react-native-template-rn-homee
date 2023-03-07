@@ -7,7 +7,11 @@ import { heightPercentageToDP } from 'react-native-responsive-screen';
 
 class AppSafeView extends React.Component {
 	render() {
-		const paddingTop = Platform.select({ ios: { paddingTop: 0 }, android: { paddingTop: AppPadding._20 } });
+		const paddingTop = Platform.select({
+			ios: { paddingTop: 0 },
+			// android: { paddingTop: AppPadding._20 }
+			android: { paddingTop: AppPadding._20 }
+		});
 		const { bounces, color, disableBottom } = this.props;
 		return (
 			<SafeAreaView style={[{ flex: 1, backgroundColor: color ? color : Colors.background }, paddingTop]}>

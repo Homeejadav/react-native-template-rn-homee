@@ -1,5 +1,6 @@
 # React-Native Boilarplate by Homee
 
+- Animated DropDown Picker
 - Custom BottomTab with 2 Demo Screens.
 - Navigations (ReactNavigations V6).
 - Preloaded Dependencies ( Redux, Redux-thunk, Redux-logger, Redux-Persist).
