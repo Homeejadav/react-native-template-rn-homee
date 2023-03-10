@@ -6,7 +6,6 @@ import SettingScreen from './SettingScreen';
 import DetailsScreen from './DetailsScreen';
 import OnboardingScreen from "./OnboardingScreen";
 import OtpScreen from "./OtpScreen";
-import TestScreen from './TestScreen';
 
 export {
 	SplashScreen,
@@ -17,5 +16,4 @@ export {
 	SettingScreen,
 	DetailsScreen,
 	OtpScreen,
-	TestScreen,
 }

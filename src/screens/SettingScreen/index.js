@@ -7,8 +7,9 @@ import { bindActionCreators } from 'redux';
 import {
 	AppButton,
 	AppCheckBox, AppRadioButton,
-	AppSafeView, AppSwitch
+	AppSafeView, AppSwitch, AppFavoriteButton
 } from '../../components/Custom';
+
 import AppPicker from '../../components/Custom/AppPicker';
 import { AppContainer, AppMargin } from '../../constants/commonStyle';
 import { reducerType } from '../../constants/reducerType';
@@ -22,8 +23,13 @@ class SettingScreen extends React.Component {
 			isChecked: false,
 			isRadio: false,
 			isSwitch: false,
+			isFavorite: false,
 			lang: 'Select a Language'
 		};
+	}
+
+	componentDidMount() {
+
 	}
 
 	_onClick = () => {
@@ -36,7 +42,7 @@ class SettingScreen extends React.Component {
 
 	render() {
 		const { navigation } = this.props;
-		const { isChecked, isRadio, isSwitch } = this.state;
+		const { isChecked, isRadio, isSwitch, isFavorite } = this.state;
 
 		const languageOption = [
 			{ id: 1, label: 'English', value: 'en' },
@@ -49,12 +55,13 @@ class SettingScreen extends React.Component {
 			<AppSafeView>
 				<View style={AppContainer}>
 					<ScrollView showsVerticalScrollIndicator={false} bounces={false}>
+
 						<AppPicker
+							title={this.state.lang}
 							shadow={true}
 							options={languageOption}
 							itemKey={'label'}
 							itemValue={'value'}
-							title={this.state.lang}
 							onSelectOption={(name, value) => {
 								this.setState({ lang: name })
 								this.props.dispatchData(value, reducerType.localize);
@@ -84,12 +91,24 @@ class SettingScreen extends React.Component {
 								this.setState({ isSwitch: !isSwitch });
 							}}
 						/>
+
+						<AppFavoriteButton
+							top={AppMargin._20}
+							value={isFavorite}
+							onValueChange={() => {
+								this.setState({ isFavorite: !isFavorite });
+							}}
+						/>
+
+
 					</ScrollView>
 
 					<AppButton
 						top={hp(2)}
 						label={t('title')}
-						onClick={() => { navigation.replace('OnboardingScreen') }}
+						onClick={() => {
+							navigation.replace('OnboardingScreen')
+						}}
 					/>
 
 				</View>

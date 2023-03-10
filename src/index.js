@@ -10,7 +10,6 @@ import { borderRadius5 } from './constants/commonStyle';
 import StackNavigator from './navigators/stackNavigator';
 import { persistor, store } from './reducers';
 
-
 class App extends React.Component {
 	componentDidMount() {
 		Appearance.addChangeListener(({ colorScheme }) => {
@@ -23,7 +22,6 @@ class App extends React.Component {
 
 
 	render() {
-
 		const toastConfig = {
 			error: ({ text1, props }) => (
 				<View style={styles.mainViewStyle}>
@@ -33,7 +31,6 @@ class App extends React.Component {
 					</View>
 				</View>
 			),
-
 			success: ({ text1, props }) => (
 				<View style={[styles.mainViewStyle, { backgroundColor: Colors.success }]}>
 					<View style={styles.subViewStyle}>
@@ -43,7 +40,6 @@ class App extends React.Component {
 				</View>
 			),
 		};
-
 
 		return (
 			<Provider store={store}>
@@ -57,7 +53,6 @@ class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
 	mainViewStyle: {
 		height: 50,
 		width: '90%',
@@ -65,17 +60,14 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		...borderRadius5,
 	},
-
 	subViewStyle: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		paddingLeft: 10,
 	},
-
 	iconStyle: {
 		tintColor: Colors.snowWhite
 	},
-
 	textStyle: {
 		width: '90%',
 		color: Colors.snowWhite,

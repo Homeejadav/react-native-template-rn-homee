@@ -7,16 +7,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Colors } from '../../constants/colors';
 import { AppHeight, AppWidth } from '../../constants/commonStyle';
-// import LoadingSpinner from '../../screens/TestScreen/indexdemo';
 import AppText from './AppText';
 
 class AppButton extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+		};
 	}
 
-	_buttonStyle = () => {
+	_buttonStyle() {
 		const { width, bottom } = this.props;
 		return {
 			width: width ? width : AppWidth._100pr,
@@ -26,22 +26,17 @@ class AppButton extends React.Component {
 			justifyContent: 'center',
 			alignItems: 'center',
 		};
-	};
+	}
 
 	render() {
-		const { label, fontsize, onClick, containerStyle, top, fontFamily } = this.props;
+		const { label, fontsize, onClick, containerStyle, top, fontFamily, isLoading } = this.props;
 		return (
 			<View style={[containerStyle, { marginTop: top ? top : 0 }]}>
-				<TouchableOpacity activeOpacity={0.5} onPress={onClick}>
-					{/* linear gredient pattern from left to right */}
-					{/* start={{ x: 0, y: 0.90 }} end={{ x: 1, y: 0.10 }} */}
+				<TouchableOpacity onPress={onClick} activeOpacity={0.8}>
 					<LinearGradient style={this._buttonStyle()} colors={Colors.gredient}>
-						{this.props.isLoading ? (
-							<Spinner size={22} type={'Circle'} color={Colors.snowWhite} />
-						) : (
-							// <LoadingSpinner />
-							<AppText fontFamily={fontFamily} fontsize={fontsize} color={Colors.snowWhite} label={label} />
-						)}
+						{isLoading ?
+							(<Spinner size={22} type={'Circle'} color={Colors.snowWhite} />)
+							: (<AppText fontFamily={fontFamily} fontsize={fontsize} color={Colors.snowWhite} label={label} />)}
 					</LinearGradient>
 				</TouchableOpacity>
 			</View>
@@ -50,7 +45,9 @@ class AppButton extends React.Component {
 }
 
 const mapStatetoProps = (state) => {
-	return {};
+	return {
+
+	};
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(actionCreators, dispatch);

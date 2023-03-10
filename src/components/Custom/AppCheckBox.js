@@ -4,7 +4,7 @@ import { Icons } from '../../assets';
 import { Colors } from '../../constants/colors';
 import { AppPadding, borderRadius5 } from '../../constants/commonStyle';
 
-class CheckBox extends Component {
+class AppCheckBox extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -29,15 +29,8 @@ class CheckBox extends Component {
 
 	render() {
 		const animatedStyles = {
-			transform: [
-				{
-					scale: this.state.checkboxAnimation.interpolate({
-						inputRange: [0, 4],
-						outputRange: [0, 4],
-					}),
-				},
-			],
 			backgroundColor: this.props.color,
+			transform: [{ scale: this.state.checkboxAnimation.interpolate({ inputRange: [0, 4], outputRange: [0, 4] }) }],
 		};
 
 		return (
@@ -50,7 +43,7 @@ class CheckBox extends Component {
 	}
 }
 
-CheckBox.defaultProps = {
+AppCheckBox.defaultProps = {
 	color: Colors.snowWhite,
 	value: false,
 };
@@ -74,4 +67,4 @@ const styles = {
 	},
 };
 
-export default CheckBox;
+export default AppCheckBox;

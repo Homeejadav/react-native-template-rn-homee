@@ -30,7 +30,6 @@ class StackNavigator extends React.Component {
 			<NavigationContainer ref={navigationRef}>
 				<StatusBar animated={true} backgroundColor={Colors.snowWhite} barStyle={"dark-content"} />
 				<Stack.Navigator screenOptions={{ headerShown: false }}>
-					{/* {this._addScreen('TestScreen')} */}
 					<Stack.Screen options={{ animation: 'fade' }} name={'BottomTab'} component={BottomTabNav} />
 					<Stack.Screen name={'SplashScreen'} component={Screen.SplashScreen} />
 					<Stack.Screen options={{ animation: 'fade' }} name={'OnboardingScreen'} component={Screen.OnboardingScreen} />

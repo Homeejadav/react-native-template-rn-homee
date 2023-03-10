@@ -1,6 +1,12 @@
 # React-Native Boilarplate by Homee
 
-- Animated DropDown Picker
+New Added.
+
+- Animated Favorite Button
+- Animated Drop Down
+
+---
+
 - Custom BottomTab with 2 Demo Screens.
 - Navigations (ReactNavigations V6).
 - Preloaded Dependencies ( Redux, Redux-thunk, Redux-logger, Redux-Persist).
@@ -9,7 +15,7 @@
 - Multiple type of Onboarding Screens
 - Login Screen with Validation Toast.
 - Mobile Login Screen.
-- .env file with Demo API.
+- .Env file with Demo API.
 - OTP Screen.
 - Optimised Keyboard Avoiding View.
 - Footer Content.
@@ -48,14 +54,32 @@ Link assets with
 
 ![App Screenshot](https://i.paste.pics/f765c986b0d5bd45d82516185b94f777.png)
 
-![App Screenshot](https://i.paste.pics/951a9cc4a95476e4dbcc3d9d5328cdf9.png)
+![App Screenshot](https://i.paste.pics/a453a86a684106838bb157924cb70021.png)
 
-## Animated Components
+## Custom Animated Components
 
-Check box, Radio Button, Switch.
+Animated Dropdown
 
 ```bash
-import { AppCheckBox, AppRadioButton, AppSwitch } from '../../components/Custom';
+import AppPicker from '../../components/Custom/AppPicker';
+
+<AppPicker
+	title={this.state.lang}
+	shadow={true}
+	options={languageOption}
+	itemKey={'label'}
+	itemValue={'value'}
+	onSelectOption={(name, value) => {
+		this.setState({ lang: name })
+		this.props.dispatchData(value, reducerType.localize);
+		}}
+	/>
+```
+
+Check box
+
+```bash
+import { AppCheckBox } from '../../components/Custom';
 
 <AppCheckBox
 	top={AppMargin._20}
@@ -64,6 +88,48 @@ import { AppCheckBox, AppRadioButton, AppSwitch } from '../../components/Custom'
 	this.setState({ isChecked: !isChecked });
     }}
   />
+```
+
+Radio Button
+
+```bash
+import { AppRadioButton } from '../../components/Custom';
+
+<AppRadioButton
+	top={AppMargin._20}
+	value={isRadio}
+	onValueChange={() => {
+	this.setState({ isRadio: !isRadio });
+	}}
+/>
+```
+
+Switch Button
+
+```bash
+import { AppSwitch } from '../../components/Custom';
+
+<AppSwitch
+	top={AppMargin._20}
+	value={isSwitch}
+	onValueChange={() => {
+	this.setState({ isSwitch: !isSwitch });
+	}}
+/>
+```
+
+Favorite Button
+
+```bash
+import { AppFavoriteButton } from '../../components/Custom';
+
+<AppFavoriteButton
+	top={AppMargin._20}
+	value={isFavorite}
+	onValueChange={() => {
+	this.setState({ isFavorite: !isFavorite });
+	}}
+/>
 ```
 
 ## Authors

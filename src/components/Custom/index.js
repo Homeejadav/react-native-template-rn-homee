@@ -13,6 +13,7 @@ import AppCheckBox from './AppCheckBox';
 import AppRadioButton from './AppRadioButton';
 import AppSwitch from './AppSwitch';
 import AppLoader from './AppLoader';
+import AppFavoriteButton from './AppFavoriteButton';
 
 export {
 	AppButton,
@@ -29,5 +30,6 @@ export {
 	AppDropdown,
 	AppSwitch,
 	AppOtpView,
-	AppLoader
+	AppLoader,
+	AppFavoriteButton
 };

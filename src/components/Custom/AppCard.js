@@ -1,6 +1,6 @@
 import { actionCreators } from '@actions';
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Fonts } from '../../assets';
@@ -31,23 +31,18 @@ class AppCard extends React.Component {
 	}
 }
 
-
 const styles = StyleSheet.create({
-
 	container: {
-		...borderRadius5,
 		padding: AppPadding._10,
 		borderWidth: 2,
 		borderColor: Colors.primaryTransparent,
-		// borderColor: Colors.placeholder,
-	},
-
-	imageStyle: {
 		...borderRadius5,
+	},
+	imageStyle: {
 		height: AppHeight._250,
 		width: '100%',
+		...borderRadius5,
 	}
-
 });
 
 const mapStatetoProps = state => {
