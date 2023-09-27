@@ -1,138 +1,48 @@
-# React-Native Boilarplate by Homee
+## React-Native Boilerplate by Homee!
 
-New Added.
+## 🌟 Features
 
-- Animated Favorite Button
-- Animated Drop Down
+- 🚀 TypeScript (.tsx)
+- 🌈 Splash Screen / App Icon (iOS) Natively Changed
+- 🎮 Custom BottomTab with Test Screens
+- 🌓 Dark & Light Theme Support
+- 🚢 Navigations with React Navigation V6
+- 🧙‍♂️ State Management with the ReduxToolkit and Redux-Persist
+- 🧪 React-native-MMKV for Redux-Persist
+- 🌐 Axios Api Manager
+- 🔐 Login Screen with Validation and Toast
+- ⚙️ Config file with Test APIs and Methods
+- 🌍 Multiple Language Support with i18n
+- 💎 Many Custom Components
 
----
+## 🚀 Getting started
 
-- Custom BottomTab with 2 Demo Screens.
-- Navigations (ReactNavigations V6).
-- Preloaded Dependencies ( Redux, Redux-thunk, Redux-logger, Redux-Persist).
-- Custom Components.
-- Axios Api Manager.
-- Multiple type of Onboarding Screens
-- Login Screen with Validation Toast.
-- Mobile Login Screen.
-- .Env file with Demo API.
-- OTP Screen.
-- Optimised Keyboard Avoiding View.
-- Footer Content.
-- i18n with 4 demo languages.
-- Multiple Language Support.
-- Custom Picker.
-- Animated Check Box, Toggle Button, Radio Button.
-
-## Installation
-
-Install with npx or yarn
-
-since there is an error with latest React-Native versions, we will stick to 0.68.2
-
-Replace your package name with MyDemoApp.
-
-I have added few fonts in ready made template.
+To create the new project, run the following command:
 
 ```bash
- npx react-native init MyDemoApp --version 0.68.2 --template rn-homee
+npx react-native@latest init AwesomeProject --template react-native-template-rn-homee
 ```
 
-Download Popping Font from link below, and Copy pest Regular, Medium, Bold into src/assets/Fonts
+Replace "AwesomeProject" with your package name.
+
+The boilerplate uses the Poppins font.
+To download the font, visit [Google Fonts - Poppins](https://fonts.google.com/specimen/Poppins) and download the Popping Font or any other font of your choice.
+Copy the Regular, Medium, and Bold into `src/assets/Fonts`.
+Link the assets with:
 
 ```bash
- https://fonts.google.com/specimen/Poppins
+npx react-native-asset
 ```
 
-Link assets with
+## 📸 Screenshots
 
-```bash
- npx react-native link
-```
+![App Screenshot](https://i.paste.pics/9daf833b8869e6bd6739e381a8c569e2.png)
+![App Screenshot](https://i.paste.pics/24afad006d42549b9ca86da1bf3852b7.png)
 
-## Screenshots
+## 🧙‍♂️Author
 
-![App Screenshot](https://i.paste.pics/f765c986b0d5bd45d82516185b94f777.png)
+- [@homeejadav](https://www.github.com/homeejadav) - Homee
 
-![App Screenshot](https://i.paste.pics/a453a86a684106838bb157924cb70021.png)
+## Contributions
 
-## Custom Animated Components
-
-Animated Dropdown
-
-```bash
-import AppPicker from '../../components/Custom/AppPicker';
-
-<AppPicker
-	title={this.state.lang}
-	shadow={true}
-	options={languageOption}
-	itemKey={'label'}
-	itemValue={'value'}
-	onSelectOption={(name, value) => {
-		this.setState({ lang: name })
-		this.props.dispatchData(value, reducerType.localize);
-		}}
-	/>
-```
-
-Check box
-
-```bash
-import { AppCheckBox } from '../../components/Custom';
-
-<AppCheckBox
-	top={AppMargin._20}
-	value={isChecked}
-	onValueChange={() => {
-	this.setState({ isChecked: !isChecked });
-    }}
-  />
-```
-
-Radio Button
-
-```bash
-import { AppRadioButton } from '../../components/Custom';
-
-<AppRadioButton
-	top={AppMargin._20}
-	value={isRadio}
-	onValueChange={() => {
-	this.setState({ isRadio: !isRadio });
-	}}
-/>
-```
-
-Switch Button
-
-```bash
-import { AppSwitch } from '../../components/Custom';
-
-<AppSwitch
-	top={AppMargin._20}
-	value={isSwitch}
-	onValueChange={() => {
-	this.setState({ isSwitch: !isSwitch });
-	}}
-/>
-```
-
-Favorite Button
-
-```bash
-import { AppFavoriteButton } from '../../components/Custom';
-
-<AppFavoriteButton
-	top={AppMargin._20}
-	value={isFavorite}
-	onValueChange={() => {
-	this.setState({ isFavorite: !isFavorite });
-	}}
-/>
-```
-
-## Authors
-
-- I welcome all contributors
-- [@homeejadav](https://www.github.com/homeejadav)
+All talented wizards and witches are welcome to contribute their magic. 🪄

@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "target": "es2017", // You can use a later version if needed, like "es2020" or "esnext"
+    // Other compiler options...
+  },
+  "extends": "@tsconfig/react-native/tsconfig.json"
+}
